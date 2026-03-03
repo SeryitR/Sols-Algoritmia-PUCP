@@ -1,0 +1,31 @@
+#include <iostream>
+
+#include "Biblioteca/funcionesPila.h"
+#include "Biblioteca/Pila.h"
+void leerRecursiva(Pila &pila1, Pila &pila2);
+
+int main() {
+    Pila pila1, pila2;
+    construir(pila1);
+    construir(pila2);
+    ElementoPila elemento1;
+    elemento1.numero=4;
+    apilar(pila1,elemento1);
+    elemento1.numero=5;
+    apilar(pila1,elemento1);
+    elemento1.numero=10;
+    apilar(pila1,elemento1);
+    leerRecursiva(pila1, pila2);
+    imprimir(pila1);
+    imprimir(pila2);
+    return 0;
+}
+void leerRecursiva(Pila &pila1, Pila &pila2) {
+    if (esPilaVacia(pila1)) return;
+    ElementoPila elemento;
+    elemento=cima(pila1);
+    desapilar(pila1);
+    leerRecursiva(pila1,pila2);
+    apilar(pila1,elemento);
+    apilar(pila2,elemento);
+}
